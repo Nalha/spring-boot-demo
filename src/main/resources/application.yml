@@ -1,0 +1,25 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+  boot:
+    admin:
+      client:
+        url: ${BOOT_ADMIN_URL}
+        instance:
+          name: ${APP_NAME}
+          prefer-ip: ${BOOT_ADMIN_PREFER_IP}
+        enabled: ${BOOT_ADMIN_ENABLED}
+        auto-deregistration: true
+  application:
+    name: ${APP_NAME}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  servlet:
+    context-path: ${CONTEXT_PATH}
