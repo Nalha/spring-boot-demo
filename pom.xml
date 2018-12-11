@@ -80,14 +80,6 @@
 								<image>docker-registry/spring-boot-demo</image>
 								<tags>${env.CICD_EXECUTION_SEQUENCE}</tags>
 							</to>
-							<from>
-								<image>nexus3.memnon.se:8443/distroless-newrelic:latest</image>
-							</from>
-							<container>
-								<jvmFlags>
-
-								</jvmFlags>
-							</container>
 						</configuration>
 						<executions>
 							<execution>
