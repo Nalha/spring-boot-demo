@@ -79,7 +79,7 @@
 						<configuration>
 							<to>
 								<image>nexus3.memnon.se:8443/${project.artifactId}</image>
-								<tags>${IMG_VERSION}</tags>
+								<tags>${env.CICD_EXECUTION_SEQUENCE}</tags>
 							</to>
 							<from>
 								<image>nexus3.memnon.se:8443/distroless-newrelic:latest</image>
