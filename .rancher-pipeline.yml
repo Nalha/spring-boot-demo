@@ -4,7 +4,7 @@ stages:
       - runScriptConfig:
           image: maven:3-jdk-7
           shellScript: |-
-            mvn clean install -Pdocker -DIMG_VERSION=${CICD_EXECUTION_SEQUENCE}
+            mvn clean install -Pdocker
   - name: Deploy
     steps:
       - applyYamlConfig:
