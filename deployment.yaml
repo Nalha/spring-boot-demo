@@ -29,6 +29,6 @@ spec:
     spec:
       containers:
         - name: spring-boot-demo
-          image: nexus3.memnon.se:8443/spring-boot-demo:${CICD_EXECUTION_SEQUENCE}
+          image: spring-boot-demo:${CICD_EXECUTION_SEQUENCE}
           ports:
             - containerPort: 8080
