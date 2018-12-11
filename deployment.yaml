@@ -27,10 +27,8 @@ spec:
       labels:
         app: spring-boot-demo
     spec:
-      imagePullSecrets:
-        - name: pipeline-docker-registry
       containers:
-        - name: maven
-          image: spring-boot-starter-parent:${CICD_EXECUTION_SEQUENCE}
+        - name: spring-boot-demo
+          image: nexus3.memnon.se:8443/spring-boot-demo:${CICD_EXECUTION_SEQUENCE}
           ports:
             - containerPort: 8080
