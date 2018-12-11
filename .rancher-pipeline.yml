@@ -2,9 +2,9 @@ stages:
   - name: Build & Push
     steps:
       - runScriptConfig:
-          image: maven:3-jdk-7
+          image: java:8
           shellScript: |-
-            mvn clean install -Pdocker
+            ./mvnw clean install -Pdocker
   - name: Deploy
     steps:
       - applyYamlConfig:
