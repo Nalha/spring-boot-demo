@@ -3,13 +3,7 @@ stages:
   steps:
     - runScriptConfig:
         image: java:8
-        shellScript: ./mvnw clean install
-- name: Publish
-  steps:
-    - publishImageConfig:
-        dockerfilePath: ./Dockerfile
-        buildContext: .
-        tag: spring-boot-demo:${CICD_EXECUTION_SEQUENCE}
+        shellScript: ./mvnw clean install -Pdocker
 - name: Deploy
   steps:
     - applyYamlConfig:

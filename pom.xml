@@ -66,4 +66,42 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>docker</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>0.10.0</version> <!-- Check for updates! -->
+						<configuration>
+							<to>
+								<image>docker-registry/spring-boot-demo</image>
+								<tags>${env.CICD_EXECUTION_SEQUENCE}</tags>
+							</to>
+							<from>
+								<image>nexus3.memnon.se:8443/distroless-newrelic:latest</image>
+							</from>
+							<container>
+								<jvmFlags>
+
+								</jvmFlags>
+							</container>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>verify</phase>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+
 </project>
