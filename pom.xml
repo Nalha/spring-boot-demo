@@ -66,35 +66,4 @@
 		</plugins>
 	</build>
 
-	<profiles>
-		<profile>
-			<id>docker</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.google.cloud.tools</groupId>
-						<artifactId>jib-maven-plugin</artifactId>
-						<version>0.10.0</version> <!-- Check for updates! -->
-						<configuration>
-							<to>
-								<image>docker-registry.p-crxzg-pipeline:443/spring-boot-demo</image>
-								<tags>${env.CICD_EXECUTION_SEQUENCE}</tags>
-							</to>
-							<allowInsecureRegistries>true</allowInsecureRegistries>
-						</configuration>
-						<executions>
-							<execution>
-								<phase>verify</phase>
-								<goals>
-									<goal>build</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
-
 </project>
