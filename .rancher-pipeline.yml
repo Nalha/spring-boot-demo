@@ -1,10 +1,18 @@
 stages:
 - name: Build & Push
   steps:
-    - runScriptConfig:
-        image: java:8
-        shellScript: ./mvnw clean install -Pdocker
+  - runScriptConfig:
+      image: java:8
+      shellScript: ./mvnw clean install -Pdocker
 - name: Deploy
   steps:
-    - applyYamlConfig:
-        path: ./deployment.yaml
+  - applyYamlConfig:
+      path: ./deployment.yaml
+- name: test
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: test-image:1
+      pushRemote: true
+      registry: nexus3.memnon.se:8443
