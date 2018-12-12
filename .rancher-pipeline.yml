@@ -1,18 +1,19 @@
 stages:
-- name: Build & Push
+- name: Build maven
   steps:
   - runScriptConfig:
       image: java:8
-      shellScript: ./mvnw clean install -Pdocker
-- name: Deploy
+      shellScript: ./mvnw clean install
+- name: Build & Publish Dockerfile
+  steps:
+    - publishImageConfig:
+        dockerfilePath: ./Dockerfile
+        buildContext: .
+        tag: spring-boot-demo:${CICD_EXECUTION_SEQUENCE}
+        pushRemote: true
+        registry: nexus3.memnon.se:8443
+- name: Deploy yaml
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-- name: test
-  steps:
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: test-image:1
-      pushRemote: true
-      registry: nexus3.memnon.se:8443
+
