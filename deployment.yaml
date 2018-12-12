@@ -29,23 +29,26 @@ spec:
       labels:
         app: spring-boot-demo
     spec:
+      imagePullSecrets:
+      - name: nexus3
       containers:
-        - name: spring-boot-demo
-          image: nexus3.memnon.se:8443/spring-boot-demo:${CICD_EXECUTION_SEQUENCE}
-          ports:
-            - containerPort: 8080
-          env:
-            - name: APP_NAME
-              value: spring-boot-demo
-            - name: BOOT_ADMIN_ENABLED
-              value: "true"
-            - name: BOOT_ADMIN_PREFER_IP
-              value: "true"
-            - name: CONTEXT_PATH
-              value: /spring-boot-demo
-            - name: BOOT_ADMIN_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: bootAdminUrl
-                  name: common
-                  optional: false
+      - name: spring-boot-demo
+        image: nexus3.memnon.se:8443/spring-boot-demo:${CICD_EXECUTION_SEQUENCE}
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8080
+        env:
+          - name: APP_NAME
+            value: spring-boot-demo
+          - name: BOOT_ADMIN_ENABLED
+            value: "true"
+          - name: BOOT_ADMIN_PREFER_IP
+            value: "true"
+          - name: CONTEXT_PATH
+            value: /spring-boot-demo
+          - name: BOOT_ADMIN_URL
+            valueFrom:
+              configMapKeyRef:
+                key: bootAdminUrl
+                name: common
+                optional: false
