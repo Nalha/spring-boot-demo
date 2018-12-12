@@ -77,7 +77,7 @@
 						<version>0.10.0</version> <!-- Check for updates! -->
 						<configuration>
 							<to>
-								<image>rc-rancher2.memnon.se/docker-registry:443/spring-boot-demo</image>
+								<image>docker-registry.p-crxzg-pipeline:443/spring-boot-demo</image>
 								<tags>${env.CICD_EXECUTION_SEQUENCE}</tags>
 							</to>
 						</configuration>
