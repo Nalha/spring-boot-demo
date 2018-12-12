@@ -18,7 +18,3 @@ stages:
       path: ./deployment.yaml
     env:
       NAMESPACE: st
-branch:
-  include:
-  - testbranch
-  
