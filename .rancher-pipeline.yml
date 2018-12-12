@@ -6,14 +6,16 @@ stages:
       shellScript: ./mvnw clean install
 - name: Build & Publish Dockerfile
   steps:
-    - publishImageConfig:
-        dockerfilePath: ./Dockerfile
-        buildContext: .
-        tag: spring-boot-demo:${CICD_EXECUTION_SEQUENCE}
-        pushRemote: true
-        registry: nexus3.memnon.se:8443
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: spring-boot-demo:${CICD_EXECUTION_SEQUENCE}
+      pushRemote: true
+      registry: nexus3.memnon.se:8443
 - name: Deploy yaml
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-
+branch:
+  include:
+  - testbranch
