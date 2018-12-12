@@ -1,10 +1,16 @@
 stages:
 - name: Build maven
+  when:
+    branch: master
+    event: push
   steps:
   - runScriptConfig:
       image: java:8
       shellScript: ./mvnw clean install
 - name: Build & Publish Dockerfile
+  when:
+    branch: master
+    event: push
   steps:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
@@ -13,6 +19,9 @@ stages:
       pushRemote: true
       registry: nexus3.memnon.se:8443
 - name: Deploy yaml
+  when:
+    branch: master
+    event: push
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
