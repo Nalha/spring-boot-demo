@@ -8,7 +8,7 @@ public class SimpleRestApi {
 
     @GetMapping("hello")
     public String hello() {
-        return "hello";
+        return "hello there";
     }
 
 }
