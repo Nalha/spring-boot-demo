@@ -80,6 +80,7 @@
 								<image>docker-registry.p-crxzg-pipeline:443/spring-boot-demo</image>
 								<tags>${env.CICD_EXECUTION_SEQUENCE}</tags>
 							</to>
+							<allowInsecureRegistries>true</allowInsecureRegistries>
 						</configuration>
 						<executions>
 							<execution>
